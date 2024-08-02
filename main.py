@@ -1,6 +1,6 @@
-from fastapi import FastAPI
-
 from model import Todo
+
+from fastapi import FastAPI
 
 app = FastAPI()
 
@@ -12,11 +12,28 @@ async def root():
 
 todos = []
 
+"""
+POST: to create data.
+GET: to read data.
+PUT: to update data.
+DELETE: to delete data
+"""
+
 
 # Get all todos
 @app.get("/todos/")
 async def get_todos():
     return {"all todos": todos}
+
+
+"""
+The @app.get("/") tells FastAPI that the function right below is in charge of handling requests that go to:
+
+the path /
+using a get operation
+
+The value of the path parameter `item_id` will be passed to your function as the argument `item_id`.
+"""
 
 
 # Get single todo
